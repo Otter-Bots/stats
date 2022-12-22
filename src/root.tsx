@@ -12,8 +12,8 @@ import {
   Scripts,
   Title,
 } from "solid-start";
-import "./root.css";
-
+import gridCSS from "./css/mainGrid.module.css";
+import "./css/fonts.css";
 export default function Root() {
   return (
     <Html lang="en">
@@ -25,10 +25,22 @@ export default function Root() {
       <Body>
         <Suspense>
           <ErrorBoundary>
-            {/* #TODO: Set Layout + pages here */}
-            <Routes>
-              <FileRoutes />
-            </Routes>
+              <div class={gridCSS.parent}>
+                <div class={gridCSS.div1}>
+                  <h1>Otter Bots</h1>
+                </div>
+                <div class={gridCSS.div3}>
+                  <h1>Stats</h1>
+                </div>
+                <div class={gridCSS.div4}>
+                  <Routes>
+                    <FileRoutes />
+                  </Routes>
+                </div>
+                <div class={gridCSS.div5}>
+                  <p>&copy; Otter Bots 2022</p>
+                </div>
+              </div>
           </ErrorBoundary>
         </Suspense>
         <Scripts />
