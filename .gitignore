@@ -5,7 +5,7 @@ dist
 .vercel
 .netlify
 netlify
-
+json.sqlite
 # dependencies
 /node_modules
 
