@@ -16,7 +16,8 @@ class users {
     private table = dbUnit.table(`users_${new Date().getFullYear()}`);
     public commands = new increaseDecreaseHelper("commands", this.table);
     public interactions = new increaseDecreaseHelper("interactions", this.table);
-    public botUses = new mostUsedBotsHelper(this.table);
+    public messages = new increaseDecreaseHelper("messages", this.table)
+    public botUses = new UsedBotsHelper(this.table);
 }
 // Helper to make my life easier
 class increaseDecreaseHelper {
@@ -31,11 +32,11 @@ class increaseDecreaseHelper {
         return;
     }
     public async getVal(ID: string) {
-        const val = this.table.get(`_${ID}.${this.category}`, 1);
+        const val = await this.table.get(`_${ID}.${this.category}`, 1);
         return val;
     }
 }
-class mostUsedBotsHelper {
+class UsedBotsHelper {
     private table: any
     constructor(table: any) {
         this.table = table;
@@ -45,7 +46,7 @@ class mostUsedBotsHelper {
         return;
     }
     public async getVal(ID: string, botName: string) {
-        const val = this.table.get(`_${ID}.${botName}`, 1);
+        const val = await this.table.get(`_${ID}.${botName}`, 1);
         return val;
     }
 }

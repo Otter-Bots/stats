@@ -6,9 +6,10 @@ export async function GET({params}: APIEvent) {
     const botID: string = params.botID;
     const userID: string = params.userID;
     const category: any = params.category;
-    /* @ts-ignore */
-    await new db().bots[category as keyof typeof db['bots']].increase(botID);
-    await new db().users.commands.increase(userID);
+    await new db().bots[category as keyof typeof db.prototype.bots].increase(botID);
+    if (category == "commands" || category == "interactions" || category == "messages") {
+    await new db().users[category as keyof typeof db.prototype.users].increase(userID, botID);
+    }
     await new db().users.botUses.increase(userID, botID);
     return new Response(JSON.stringify({
         status: 200,
@@ -18,7 +19,7 @@ export async function GET({params}: APIEvent) {
             userID: userID
         },
         /* @ts-ignore */
-        newValue: (await new db().bots[category as keyof typeof db['bots']].getVal(botID)+1)
+        newValue: (await new db().bots[category as keyof typeof db['user']].getVal(botID)+1)
     }))
     } catch {
         return new Response(JSON.stringify({
