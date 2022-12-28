@@ -1,0 +1,13 @@
+{
+  "name": "stats",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Otter-Bots/stats.git",
+  "author": "Devramsean0 <81807361+devramsean0@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "packages/*"
+  ]
+}
