@@ -14,10 +14,12 @@
     "dotenv": "^16.0.3",
     "fastify": "^4.10.2",
     "promise-mysql": "^5.2.0",
-    "quick.db": "^9.0.8"
+    "quick.db": "^9.0.8",
+    "tsc-watch": "^6.0.0"
   },
   "scripts": {
     "build": "tsc",
-    "start": "node ."
+    "start": "node .",
+    "watch": "tsc-watch --onSuccess \"node .\""
   }
 }

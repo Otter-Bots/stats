@@ -1,0 +1,25 @@
+# Core stage
+FROM node:18-alpine as base
+WORKDIR /stats/backend
+COPY --chown=node:node yarn.lock .
+COPY --chown=node:node package.json .
+COPY --chown=node:node tsconfig.json .
+
+# Build
+FROM base as build
+RUN yarn install
+COPY . /stats/backend/
+RUN yarn build
+
+# Start
+FROM base as start
+ENV NODE_ENV="production"
+COPY --from=build /stats/backend/dist /stats/backend/dist
+COPY --from=build /stats/backend/node_modules /stats/backend/node_modules
+COPY --from=build /stats/backend/package.json /stats/backend/package.json
+RUN chown node:node /stats/backend/
+USER node
+CMD ["yarn", "start"]
+ENV PORT 80
+ENV HOST localhost
+EXPOSE 80
