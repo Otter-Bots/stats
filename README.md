@@ -1,2 +1,2 @@
 # Stats
-The public stats platform/API for public use.
+A statistics API for public use.
