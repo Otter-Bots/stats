@@ -1,12 +1,15 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'theme-ui'
 import theme from '@hackclub/theme'
+import { SessionProvider } from "next-auth/react"
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ session, Component,...pageProps }: any) {
   return (
-    // @ts-expect-error
-  <ThemeProvider theme={theme}>
-    <Component {...pageProps} />
-  </ThemeProvider>
+  <SessionProvider session={pageProps.session}>
+    {/* @ts-ignore */}
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  </SessionProvider>
   )
 }
