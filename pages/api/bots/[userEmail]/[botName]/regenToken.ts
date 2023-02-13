@@ -6,7 +6,7 @@ export default async function handler(req: any, res: any) {    // Parse userEmai
     // Form Token
     const token = `${userEmail}-${req.query.botName}-${Date.now()}-${numOfBots}`;
     const base64Token = Buffer.from(token).toString("base64");
-    await db.set(`_${userEmail}.${req.query.botName}.token`, base64Token)
+    await db.set(`_${userEmail}.bots.${req.query.botName}.token`, base64Token)
     res.status(200).json({
         token: base64Token,
     })

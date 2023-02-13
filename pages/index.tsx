@@ -1,5 +1,5 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
-import Layout from './components/layout'
+import Layout from '../components/layout'
 
 export default function Home() {
   const { data: session, status } = useSession()
