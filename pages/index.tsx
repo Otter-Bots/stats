@@ -1,10 +1,12 @@
-import { Container, Button } from 'theme-ui'
+import { Button } from 'theme-ui'
+import Layout from './components/layout'
 
 
 export default function Home() {
   return (
     <>
-      <Button>Test</Button>
+      <Layout>
+      </Layout>
     </>
   )
 }
