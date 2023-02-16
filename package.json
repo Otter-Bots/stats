@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:migrate": "dotenv -e .env.local -- prisma migrate dev"
+    "dev:db:migrate": "dotenv -e .env.local -- prisma migrate dev",
+    "dev:db:generate": "dotenv -e .env.local -- prisma generate",
+    "prod:db:migrate": "prisma migrate dev",
+    "prod:db:generate": "prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
