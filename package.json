@@ -9,7 +9,7 @@
     "lint": "next lint",
     "dev:db:migrate": "dotenv -e .env.local -- prisma migrate dev",
     "dev:db:generate": "dotenv -e .env.local -- prisma generate",
-    "prod:db:migrate": "prisma migrate dev",
+    "prod:db:migrate": "prisma migrate deploy",
     "prod:db:generate": "prisma generate"
   },
   "dependencies": {
